@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Calendar, MapPin } from 'lucide-react';
 import '../styles/portfolio.css';
 
@@ -61,10 +61,50 @@ const portfolioData = [
 ];
 
 export default function Portfolio() {
+  const [headingRevealed, setHeadingRevealed] = useState(false);
+  const [revealedItems, setRevealedItems] = useState(new Set());
+  const headingRef = useRef(null);
+  const cardRefs = useRef([]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            if (entry.target === headingRef.current) {
+              setHeadingRevealed(true);
+              observer.unobserve(entry.target);
+            } else {
+              const id = entry.target.getAttribute('data-id');
+              if (id) {
+                setRevealedItems((prev) => new Set([...prev, id]));
+                observer.unobserve(entry.target);
+              }
+            }
+          }
+        });
+      },
+      {
+        threshold: 0.1,
+        rootMargin: '0px 0px -40px 0px'
+      }
+    );
+
+    if (headingRef.current) observer.observe(headingRef.current);
+    cardRefs.current.forEach((el) => {
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section className="portfolio-section" id="Portfolio">
+    <section className="portfolio-section">
       {/* Section Heading */}
-      <div className="portfolio-heading">
+      <div
+        ref={headingRef}
+        className={`portfolio-heading ${headingRevealed ? 'is-revealed' : ''}`}
+      >
         <h2>Portfolio</h2>
         <p>
           Project experience and software development work that I have built.
@@ -72,60 +112,69 @@ export default function Portfolio() {
       </div>
 
       <div className="portfolio-timeline">
-        {portfolioData.map((item) => (
-          <div key={item.id} className="timeline-item">
-            {/* Timeline Tracker */}
-            <div className="timeline-track">
-              <div className="timeline-line" />
-              <div className="timeline-node" />
-            </div>
+        {portfolioData.map((item, index) => {
+          const isRevealed = revealedItems.has(String(item.id));
+          return (
+            <div
+              key={item.id}
+              ref={(el) => (cardRefs.current[index] = el)}
+              data-id={item.id}
+              className={`timeline-item ${isRevealed ? 'is-revealed' : ''}`}
+              style={{ '--card-delay': `${index * 120}ms` }}
+            >
+              {/* Timeline Tracker */}
+              <div className="timeline-track">
+                <div className="timeline-line" />
+                <div className="timeline-node" />
+              </div>
 
-            {/* Portfolio Card */}
-            <article className="portfolio-card">
-              {/* Card Header */}
-              <header className="card-header">
-                <div className="header-left">
-                  <h3 className="card-title">{item.role}</h3>
+              {/* Portfolio Card */}
+              <article className="portfolio-card">
+                {/* Card Header */}
+                <header className="card-header">
+                  <div className="header-left">
+                    <h3 className="card-title">{item.role}</h3>
 
-                  <div className="card-meta">
-                    <span className="project-name">
-                      <MapPin size={15} />
-                      {item.project}
-                    </span>
+                    <div className="card-meta">
+                      <span className="project-name">
+                        <MapPin size={15} />
+                        {item.project}
+                      </span>
 
-                    <span className="category-badge">
-                      {item.category}
-                    </span>
+                      <span className="category-badge">
+                        {item.category}
+                      </span>
+                    </div>
                   </div>
-                </div>
 
-                <div className="card-date">
-                  <Calendar size={15} />
-                  <span>{item.period}</span>
-                </div>
-              </header>
+                  <div className="card-date">
+                    <Calendar size={15} />
+                    <span>{item.period}</span>
+                  </div>
+                </header>
 
-              {/* Project Description */}
-              <ul className="card-bullets">
-                {item.bullets.map((bullet, idx) => (
-                  <li key={idx} className="bullet-item">
-                    <span className="bullet-dot" />
-                    <span>{bullet}</span>
-                  </li>
-                ))}
-              </ul>
+                {/* Project Description */}
+                <ul className="card-bullets">
+                  {item.bullets.map((bullet, idx) => (
+                    <li key={idx} className="bullet-item">
+                      <span className="bullet-dot" />
+                      <span>{bullet}</span>
+                    </li>
+                  ))}
+                </ul>
 
-              {/* Technology Tags */}
-              <footer className="card-tags">
-                {item.tech.map((tag, idx) => (
-                  <span key={idx} className="tag-item">
-                    {tag}
-                  </span>
-                ))}
-              </footer>
-            </article>
-          </div>
-        ))}
+                {/* Technology Tags */}
+                <footer className="card-tags">
+                  {item.tech.map((tag, idx) => (
+                    <span key={idx} className="tag-item">
+                      {tag}
+                    </span>
+                  ))}
+                </footer>
+              </article>
+            </div>
+          );
+        })}
       </div>
     </section>
   );

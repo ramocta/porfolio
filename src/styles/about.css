@@ -40,6 +40,16 @@
 
     --x: -200px;
     --y: -200px;
+
+    opacity: 0;
+    transform: translateY(35px) scale(0.96);
+    transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+}
+
+.about-section.is-revealed .about-image-wrapper {
+    opacity: 1;
+    transform: translateY(0) scale(1);
 }
 
 /* Main Image */
@@ -104,6 +114,38 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+}
+
+/* About Content - Efek Timbul Staggered */
+.about-content > * {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+}
+
+.about-section.is-revealed .about-label {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.12s;
+}
+
+.about-section.is-revealed .about-content h2 {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.24s;
+}
+
+.about-section.is-revealed .about-content p {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.38s;
+}
+
+.about-section.is-revealed .about-cv-button {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.52s;
 }
 
 .about-label {

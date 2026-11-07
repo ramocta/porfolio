@@ -1,4 +1,5 @@
 
+import { useState, useEffect } from 'react';
 import Lanyard from '../styles/lanyard/Lanyard';
 const Github = (props) => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
@@ -24,10 +25,19 @@ const Instagram = (props) => (
 );
 
 export default function Hero() {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setMounted(true);
+    }, 60);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <section className="hero">
 
-      <div className="hero-content">
+      <div className={`hero-content ${mounted ? 'is-visible' : ''}`}>
     <h1>Ahmad Okta Ramadhan</h1>
 
     <h2>Flutter & Web Developer</h2>
@@ -57,7 +67,7 @@ export default function Hero() {
 </div>
 
 
-      <div className="hero-lanyard">
+      <div className={`hero-lanyard ${mounted ? 'is-visible' : ''}`}>
 
         <Lanyard
           frontImage="/picture.jpeg"

@@ -15,6 +15,24 @@ const { title = "Astro Basics" } = Astro.props;
     <link rel="icon" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <script is:inline>
+      // Nonaktifkan scroll restoration otomatis browser agar selalu mulai dari paling atas (Home) saat reload
+      if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+      }
+
+      // Hapus hash lama saat refresh jika bukan #home agar tidak melompat ke section lain
+      if (window.location.hash && window.location.hash !== '#home') {
+        history.replaceState(null, '', window.location.pathname);
+      }
+
+      // Pastikan posisi scroll berada di posisi teratas (Home)
+      window.scrollTo(0, 0);
+
+      window.addEventListener('load', () => {
+        window.scrollTo(0, 0);
+      });
+    </script>
   </head>
   <body>
     <!-- Tempat menampung Background.jsx dan Welcome.astro -->

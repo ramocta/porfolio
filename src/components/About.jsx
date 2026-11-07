@@ -1,8 +1,25 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import '../styles/about.css';
 import { FileText } from 'lucide-react';
 
 export default function About() {
+  const [revealed, setRevealed] = useState(false);
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setRevealed(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.12 }
+    );
+
+    if (sectionRef.current) observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, []);
 
   const handleMouseMove = (e) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -20,7 +37,7 @@ export default function About() {
   };
 
   return (
-    <section className="about-section" id="About">
+    <section ref={sectionRef} className={`about-section ${revealed ? 'is-revealed' : ''}`}>
 
       <div className="about-container">
 
