@@ -1,15 +1,53 @@
-/* Portfolio Timeline & Cards */
+
+/* ========================================
+   PORTFOLIO SECTION
+======================================== */
+
+.portfolio-section {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    min-height: 100vh;
+    padding: 120px clamp(24px, 5vw, 64px);
+    background: transparent;
+}
+
+/* Portfolio Heading */
+.portfolio-heading {
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.portfolio-heading h2 {
+    margin: 0 0 16px;
+    color: #ffffff;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    letter-spacing: -0.04em;
+}
+
+.portfolio-heading p {
+    margin: 0;
+    color: #999999;
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+/* ========================================
+   PORTFOLIO TIMELINE
+======================================== */
 
 .portfolio-timeline {
     position: relative;
     max-width: 1100px;
-    margin: 40px auto 0;
+    margin: 50px auto 0;
     display: flex;
     flex-direction: column;
     gap: 32px;
 }
 
-/* Timeline Item (Node + Card) */
+/* Timeline Item */
 .timeline-item {
     position: relative;
     display: flex;
@@ -17,7 +55,7 @@
     gap: 36px;
 }
 
-/* Timeline Vertical Line & Marker */
+/* Timeline Track */
 .timeline-track {
     position: relative;
     display: flex;
@@ -28,7 +66,7 @@
     align-self: stretch;
 }
 
-/* Connecting vertical line */
+/* Timeline Vertical Line */
 .timeline-line {
     position: absolute;
     top: 0;
@@ -41,7 +79,7 @@
     bottom: 50%;
 }
 
-/* Orange circle node */
+/* Timeline Node */
 .timeline-node {
     position: relative;
     z-index: 2;
@@ -49,39 +87,54 @@
     width: 14px;
     height: 14px;
     border-radius: 50%;
-    border: 2px solid #f97316;
-    background-color: #000000;
-    box-shadow: 0 0 8px rgba(249, 115, 22, 0.35);
+    border: 2px solid #8B5CF6;
+    background-color: #0A0A0A;
+    box-shadow: 0 0 10px rgba(139, 92, 246, 0.35);
     transition: all 0.3s ease;
 }
 
 .timeline-item:hover .timeline-node {
     transform: scale(1.25);
-    border-color: #fb923c;
-    box-shadow: 0 0 14px rgba(249, 115, 22, 0.7);
+    border-color: #A78BFA;
+    box-shadow: 0 0 16px rgba(139, 92, 246, 0.7);
 }
 
-/* Portfolio Card Container */
+/* ========================================
+   PORTFOLIO CARD
+======================================== */
+
 .portfolio-card {
     flex: 1;
-    background: rgba(18, 20, 28, 0.75);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(30, 30, 30, 0.65);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 16px;
+
     padding: 26px 30px;
+
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+
     box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.5);
+
     text-align: left;
 }
 
 .portfolio-card:hover {
-    border-color: rgba(249, 115, 22, 0.3);
-    transform: translateY(-3px);
-    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7), 0 0 20px -5px rgba(249, 115, 22, 0.1);
+    border-color: rgba(139, 92, 246, 0.4);
+
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 20px 40px -15px rgba(0, 0, 0, 0.7),
+        0 0 25px -8px rgba(139, 92, 246, 0.2);
 }
 
-/* Header: Role, Project, Badge & Date */
+/* ========================================
+   CARD HEADER
+======================================== */
+
 .card-header {
     display: flex;
     align-items: flex-start;
@@ -96,6 +149,7 @@
     gap: 6px;
 }
 
+/* Role Title */
 .card-title {
     font-size: 1.35rem;
     font-weight: 700;
@@ -105,6 +159,7 @@
     letter-spacing: -0.02em;
 }
 
+/* Project Metadata */
 .card-meta {
     display: flex;
     align-items: center;
@@ -116,50 +171,67 @@
     display: inline-flex;
     align-items: center;
     gap: 6px;
+
     font-size: 0.95rem;
     font-weight: 500;
-    color: #cbd5e1;
+    color: #AAAAAA;
 }
 
 .project-name svg {
-    color: #94a3b8;
+    color: #8B5CF6;
 }
 
-/* Warm Badge for Learning/Competition */
+/* Category Badge */
 .category-badge {
     display: inline-flex;
     align-items: center;
-    padding: 2px 10px;
+
+    padding: 3px 11px;
+
     border-radius: 9999px;
+
     font-size: 0.75rem;
     font-weight: 500;
-    background: rgba(234, 88, 12, 0.15);
-    color: #fb923c;
-    border: 1px solid rgba(249, 115, 22, 0.28);
+
+    background: rgba(139, 92, 246, 0.12);
+    color: #A78BFA;
+
+    border: 1px solid rgba(139, 92, 246, 0.3);
+
     letter-spacing: 0.01em;
 }
 
-/* Date Range */
+/* ========================================
+   DATE
+======================================== */
+
 .card-date {
     display: inline-flex;
     align-items: center;
     gap: 6px;
+
     font-size: 0.875rem;
     font-weight: 500;
-    color: #94a3b8;
+
+    color: #999999;
+
     white-space: nowrap;
     padding-top: 4px;
 }
 
 .card-date svg {
-    color: #94a3b8;
+    color: #8B5CF6;
 }
 
-/* Bullets List */
+/* ========================================
+   PROJECT DESCRIPTION
+======================================== */
+
 .card-bullets {
     list-style: none;
     padding: 0;
     margin: 0 0 20px;
+
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -169,53 +241,82 @@
     display: flex;
     align-items: flex-start;
     gap: 10px;
+
     font-size: 0.95rem;
     line-height: 1.65;
-    color: #94a3b8;
+
+    color: #AAAAAA;
 }
 
 .bullet-dot {
     width: 5px;
     height: 5px;
+
     border-radius: 50%;
-    background-color: #f97316;
+
+    background-color: #8B5CF6;
+
     margin-top: 9px;
     flex-shrink: 0;
-    box-shadow: 0 0 6px rgba(249, 115, 22, 0.6);
+
+    box-shadow: 0 0 7px rgba(139, 92, 246, 0.6);
 }
 
-/* Tech Stack Tags */
+/* ========================================
+   TECHNOLOGY TAGS
+======================================== */
+
 .card-tags {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
-    padding-top: 4px;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
+
+    padding-top: 12px;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .tag-item {
     display: inline-flex;
     align-items: center;
-    padding: 4px 12px;
+
+    padding: 5px 12px;
+
     border-radius: 6px;
-    background: rgba(30, 41, 59, 0.55);
-    border: 1px solid rgba(255, 255, 255, 0.07);
-    color: #cbd5e1;
+
+    background: rgba(139, 92, 246, 0.08);
+
+    border: 1px solid rgba(139, 92, 246, 0.15);
+
+    color: #C4B5FD;
+
     font-size: 0.8rem;
     font-weight: 500;
+
     transition: all 0.2s ease;
     user-select: none;
 }
 
 .tag-item:hover {
-    background: rgba(249, 115, 22, 0.12);
-    border-color: rgba(249, 115, 22, 0.3);
+    background: rgba(139, 92, 246, 0.18);
+
+    border-color: rgba(139, 92, 246, 0.45);
+
     color: #ffffff;
-    transform: translateY(-1px);
+
+    transform: translateY(-2px);
 }
 
-/* Responsiveness */
+/* ========================================
+   RESPONSIVE - TABLET
+======================================== */
+
 @media (max-width: 768px) {
+
+    .portfolio-section {
+        padding: 100px 24px;
+    }
+
     .timeline-item {
         gap: 20px;
     }
@@ -237,7 +338,7 @@
     .card-header {
         flex-direction: column;
         align-items: flex-start;
-        gap: 8px;
+        gap: 10px;
     }
 
     .card-date {
@@ -254,7 +355,29 @@
     }
 }
 
+/* ========================================
+   RESPONSIVE - MOBILE
+======================================== */
+
 @media (max-width: 480px) {
+
+    .portfolio-section {
+        padding: 80px 18px;
+    }
+
+    .portfolio-heading h2 {
+        font-size: 2rem;
+    }
+
+    .portfolio-heading p {
+        font-size: 0.9rem;
+    }
+
+    .portfolio-timeline {
+        margin-top: 35px;
+        gap: 24px;
+    }
+
     .timeline-track {
         display: none;
     }
@@ -265,5 +388,23 @@
 
     .portfolio-card {
         padding: 18px 16px;
+        border-radius: 12px;
+    }
+
+    .card-title {
+        font-size: 1.1rem;
+    }
+
+    .project-name {
+        font-size: 0.85rem;
+    }
+
+    .bullet-item {
+        font-size: 0.85rem;
+    }
+
+    .tag-item {
+        font-size: 0.75rem;
+        padding: 4px 9px;
     }
 }

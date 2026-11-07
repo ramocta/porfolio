@@ -41,15 +41,15 @@ export default function Hero() {
         <p>Find Me:</p>
 
         <div className="hero-social">
-            <a href="https://github.com/ahmadokta">
+            <a href="https://github.com/ramocta">
                 <Github />
             </a>
 
-            <a href="https://www.linkedin.com/in/ahmadokta">
+            <a href="https://www.linkedin.com/in/ahmad-okta-ramadhan-a15b82446">
                 <Linkedin />
             </a>
 
-            <a href="https://instagram.com/USERNAME">
+            <a href="https://instagram.com/_rdrnzy">
                 <Instagram />
             </a>
         </div>
