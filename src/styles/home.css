@@ -1,0 +1,269 @@
+/* Container Utama Hero */
+.Home {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+}
+
+.hero {
+    position: relative;
+    z-index: 10;
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+    max-width: 1460px;
+    min-height: 100vh;
+
+    margin: 0 auto;
+
+    padding: 100px clamp(24px, 5vw, 64px) 60px;
+
+    gap: clamp(40px, 5vw, 80px);
+}
+
+/* Kolom Kiri - Informasi Profil */
+.hero-content {
+    position: relative;
+    z-index: 20;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+
+    width: 55%;
+    max-width: 760px;
+    flex-shrink: 0;
+
+    text-align: left;
+}
+
+/* Teks Role */
+.hero-content p:first-child {
+    font-size: 1rem;
+    color: #737373;
+
+    margin: 0 0 20px;
+}
+
+/* Nama */
+.hero-content h1 {
+    font-size: clamp(2.8rem, 4.5vw, 4.5rem);
+    font-weight: 500;
+
+    color: #ffffff;
+
+    margin: 0 0 24px;
+
+    line-height: 1.15;
+    letter-spacing: -2px;
+}
+
+/* Subjudul */
+.hero-content h2 {
+    font-size: 1.75rem;
+    font-weight: 600;
+
+    color: #f4f4f4;
+
+    margin: 0 0 16px;
+}
+
+/* Deskripsi */
+.hero-description,
+.hero-content > p,
+.hero-content p:last-child {
+    font-size: 1.125rem;
+    color: #626b7c;
+
+    max-width: 760px;
+
+    line-height: 1.7;
+    margin: 0 0 10px;
+}
+
+/* Kontainer Social Media */
+.hero-social-container {
+    position: relative;
+    z-index: 20;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+
+    margin-top: 20px;
+}
+
+
+/* Kontainer Social Media - Icon */
+.hero-social {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+/* Link Social Media */
+.hero-social a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #626b7c;
+    text-decoration: none;
+
+    transition: all 0.3s ease;
+}
+
+/* Ukuran Icon */
+.hero-social a svg {
+    width: 22px;
+    height: 22px;
+}
+
+/* Hover */
+.hero-social a:hover {
+    color: #1a1a1a;
+    transform: translateY(-3px);
+}
+
+/* Kolom Kanan - Lanyard */
+
+.hero-lanyard {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    z-index: 10;
+
+    width: 48%;
+    height: 100%;
+    min-height: 450px;
+
+    flex-shrink: 0;
+    pointer-events: auto;
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+    .hero {
+        gap: 30px;
+        padding: 100px 32px 50px;
+    }
+
+    .hero-content {
+        width: 55%;
+    }
+
+    .hero-content h1 {
+        font-size: 3rem;
+    }
+
+    .hero-lanyard {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 45%;
+        height: 100%;
+    }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+    .hero {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        min-height: auto;
+
+        padding: 120px 24px 50px;
+        gap: 40px;
+    }
+
+    .hero-content {
+        width: 100%;
+        max-width: 600px;
+
+        align-items: flex-start;
+        text-align: left;
+    }
+
+    .hero-content h1 {
+        font-size: clamp(2.3rem, 8vw, 3rem);
+        letter-spacing: -1px;
+    }
+
+    .hero-content h2 {
+        font-size: 1.4rem;
+    }
+
+    .hero-description,
+    .hero-content > p,
+    .hero-content p:last-child {
+        font-size: 1rem;
+    }
+
+    .hero-lanyard {
+        position: relative;
+        top: auto;
+        right: auto;
+        left: auto;
+
+        width: 100%;
+        max-width: 450px;
+
+        height: 450px;
+        min-height: 400px;
+    }
+}
+
+/* Mobile Kecil */
+@media (max-width: 480px) {
+    .hero {
+        padding: 110px 20px 40px;
+        gap: 30px;
+    }
+
+    .hero-content h1 {
+        font-size: 2.2rem;
+    }
+
+    .hero-lanyard {
+        height: 380px;
+        min-height: 380px;
+    }
+}
+
+/* Styling Section Tambahan (About, Portfolio, Contact) */
+.section-container {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    max-width: 1460px;
+    min-height: 80vh;
+    margin: 0 auto;
+    padding: 120px clamp(24px, 5vw, 64px) 80px;
+    scroll-margin-top: 100px;
+}
+
+.section-header h2 {
+    font-size: clamp(2.2rem, 3.5vw, 3rem);
+    font-weight: 600;
+    color: #ffffff;
+    margin: 0 0 16px;
+    letter-spacing: -1px;
+}
+
+.section-header p {
+    font-size: 1.125rem;
+    color: #a0aec0;
+    max-width: 650px;
+    line-height: 1.7;
+    margin: 0;
+}

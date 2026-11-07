@@ -1,11 +1,40 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import '../styles/global.css';
+import '../styles/home.css';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Layout from '../layouts/Layout.astro';
+import Background from '../layouts/Background.jsx';
+import Navbar from '../components/Navbar.jsx';
+import Hero from '../components/Hero.jsx';
+import About from '../components/About.jsx';
+import Portfolio from '../components/Portfolio.jsx';
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Portofolio Saya">
+
+    <Background client:only="react" />
+
+    <header class="nav-wrap">
+        <Navbar client:load />
+    </header>
+
+    <main>
+        <section id="home" class="Home">
+            <Hero client:only="react" />
+        </section>
+
+        <section id="about" class="section-container">
+              <About client:only="react" />
+        </section>
+
+        <section id="portfolio" class="section-container">
+            <div class="section-header">
+                <h2>Portfolio</h2>
+                <p>Project experience and software development work that I have built.</p>
+            </div>
+            <Portfolio client:visible />
+        </section>
+
+    </main>
+
 </Layout>

@@ -1,0 +1,46 @@
+html {
+    scroll-behavior: smooth;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    --font-alt: 'Times New Roman', Times, serif;
+    font-family: var(--font-alt);
+    margin: 0;
+    padding: 0;
+
+    background-color: #000000;
+    color: #ffffff;
+    text-align: left;
+    line-height: 1.7;
+
+    position: relative;
+    overflow-x: hidden;
+
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+main {
+    width: 100%;
+    max-width: none;
+
+    margin: 0;
+    padding: 0;
+}
+
+
+section {
+    scroll-margin-top: 100px;
+}
+
+.nav-wrap {
+    position: fixed;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 50;
+}
