@@ -87,7 +87,7 @@ export default function About() {
           </p>
 
             <a
-            href="/SV-Ahmad-Okta-Ramadhan.pdf"
+            href="/CV-Ahmad-Okta-Ramadhan.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="about-cv-button"
